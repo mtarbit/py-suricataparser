@@ -106,15 +106,22 @@ class Rule:
 
     def build_options(self):
         self._metadata = []
+
+        def _int_or_raw_value(value):
+            try:
+                return int(value)
+            except ValueError:
+                return value
+
         for option in self._options:
             if option.name == Option.MSG:
                 self._msg = option.value.strip('"')
             elif option.name == Option.SID:
-                self._sid = int(option.value)
+                self._sid = _int_or_raw_value(option.value)
             elif option.name == Option.GID:
-                self._gid = int(option.value)
+                self._gid = _int_or_raw_value(option.value)
             elif option.name == Option.REV:
-                self._rev = int(option.value)
+                self._rev = _int_or_raw_value(option.value)
             elif option.name == Option.CLASSTYPE:
                 self._classtype = option.value
             elif option.name == Option.METADATA:
