@@ -12,8 +12,8 @@ def test_parse_rule():
            '(msg:"ET CURRENT_EVENTS Request to .in FakeAV Campaign June ' \
            '19 2012 exe or zip"; flow:established,to_server; content:"setup."; ' \
            'fast_pattern:only; http_uri; content:".in|0d 0a|"; flowbits:isset,somebit; ' \
-           'flowbits:unset,otherbit; http_header; pcre:"/\/[a-f0-9]{16}\/([a-z0-9]{1,3}\/)?' \
-           'setup\.(exe|zip)$/U"; pcre:"/^Host\x3a\s.+\.in\r?$/Hmi"; metadata:stage,hostile_download; ' \
+           r'flowbits:unset,otherbit; http_header; pcre:"/\/[a-f0-9]{16}\/([a-z0-9]{1,3}\/)?' \
+           r'setup\.(exe|zip)$/U"; pcre:"/^Host\x3a\s.+\.in\r?$/Hmi"; metadata:stage,hostile_download; ' \
            'reference:url,isc.sans.edu/diary/+Vulnerabilityqueerprocessbrittleness/13501; ' \
            'classtype:trojan-activity; sid: 2014929; rev: 1;)'
     parsed_rule = parse_rule(rule)
